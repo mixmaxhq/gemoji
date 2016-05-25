@@ -25,8 +25,9 @@ module Emoji
         if emoji_char_codes.include?(hexes.first.to_i(16))
           # When an emoji supports skin-tone modifiers, all variants--including
           # the unmodified "base" emoji--are suffixed with a "." + a number:
-          # 0 for the base, then 1-5 for Fitzpatrick type
-          # (https://en.wikipedia.org/wiki/Fitzpatrick_scale) 2-6. We remove the
+          # 0 for the base, then 1-5 which maps to Fitzpatrick types 2-6
+          # (https://en.wikipedia.org/wiki/Fitzpatrick_scale). We remove the
+
           # base's suffix to fix its lookups.
           hexes.last.gsub!(/\.0$/, '')
           filename = "#{hexes.join('-')}.#{bitmap.type}"
